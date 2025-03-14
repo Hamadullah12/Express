@@ -35,17 +35,44 @@
 // // });
 
 // path pararmeterrs
-const express = require("express"); //we have to import express
-const app = express();
+// const express = require("express"); //we have to import express
+// const app = express();
 
-let port = 8080; //locall server
+// let port = 8080; //locall server
+// app.listen(port, () => {
+//   //it listen the request
+//   console.log(`${port} server is succesfully running`);
+//   app.get("/:username/:id", (req, res) => {
+//     //these are paht parameters with get method
+//     let { username, id } = req.params; //params are parameters that is used to display the paramerter that we pass
+//     let htmlCode = `<h1>The user @${username} has <p> been enrolled </p> with id: ${id} </h1>`;
+//     res.send(htmlCode); //at the end we send the response
+//   });
+// });
+
+// const express = require("express");
+// const app = express();
+// let port = 3000;
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+//   app.get("/:name/:password", (req, res) => {
+//     let { name, password } = req.params;
+//     res.send(`${name} and the password is ${password}`);
+//   });
+// });
+
+const express = require("express");
+const app = express();
+let port = 8080;
+
 app.listen(port, () => {
-  //it listen the request
-  console.log(`${port} server is succesfully running`);
-  app.get("/:username/:id", (req, res) => {
-    //these are paht parameters with get method
-    let { username, id } = req.params; //params are parameters that is used to display the paramerter that we pass
-    let htmlCode = `<h1>The user @${username} has <p> been enrolled </p> with id: ${id} </h1>`;
-    res.send(htmlCode); //at the end we send the response
-  });
+  console.log(`server is running on port ${port}`);
+});
+
+app.get("/search", (req, res) => {
+  let { q } = req.query;
+  if (!q) {
+    res.send("<h1>Nothing searched</h1>");
+  }
+  res.send(`Serch results for ${q}`);
 });
